@@ -98,7 +98,7 @@ class productController {
         },
         {
           $project: {
-            createdAt: 0,
+            // createdAt: 0,
             updatedAt: 0,
             'categoryName.createdAt': 0,
             'categoryName.updatedAt': 0,
@@ -108,6 +108,9 @@ class productController {
           $unwind: {
             path: '$categoryName',
           },
+        },
+        {
+          $sort: { createdAt: -1 },
         },
       ])
       console.log(allProduct)
